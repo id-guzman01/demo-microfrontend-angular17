@@ -1,0 +1,21 @@
+.quantity-input {
+    width: 50px;
+  }
+  
+  .quantity-btn {
+    width: 40px;
+  }
+  
+  .card {
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  
+  .product-image {
+    height: 200px; /* Establece la altura deseada para las imágenes de los productos */
+  }
+  

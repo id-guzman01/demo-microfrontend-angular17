@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="product-catalog">
+      <h2 class="text-center mb-4">Catálogo de Productos</h2>
+  
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let product of productos">
+          <div class="card h-100 shadow-sm">
+            <img [src]="product.thumbnail" class="card-img-top product-image" alt="{{ product.title }}">
+            <div class="card-body">
+              <h3 class="card-title">{{ product.title }}</h3>
+              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text">Price: ${{ product.price }}</p>
+              <p class="card-text">Stock: {{ product.stock }}</p>
+              <div class="form-group">
+                <label for="quantity{{product.id}}">Cantidad:</label>
+                <div class="d-flex align-items-center">
+                  <button class="btn btn-outline-secondary quantity-btn" style="margin-right: 5px;" type="button" (click)="decreaseQuantity(product)">
+                    <i class="bi bi-dash"></i>
+                  </button>
+                  <span class="quantity-span">{{ product.cantidad }}</span>
+                  <button class="btn btn-outline-secondary quantity-btn ml-2" style="margin-left: 5px;" type="button" (click)="increaseQuantity(product)">
+                    <i class="bi bi-plus-lg"></i>
+                  </button>
+                </div>
+              </div>
+              <button class="btn btn-primary mt-3" (click)="addToCart(product)">Añadir al carrito</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

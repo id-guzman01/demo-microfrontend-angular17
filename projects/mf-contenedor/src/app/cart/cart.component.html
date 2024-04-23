@@ -1,0 +1,52 @@
+@if(!showCart){
+    <button class="floating-button" (click)="toggleCart()">
+        <i class="bi bi-cart3"></i>
+    </button>
+}
+@if(showCart){
+    <div class="background-cart"></div>
+    <div class="section-content-cart">
+        <button class="btn-close" (click)="toggleCart()"></button>
+        <section class="title-cart">
+            <h3>Carrito de Compras</h3>
+        </section>
+        <section class="section_products_cart">
+            @if(productosCart.length == 0){
+                <p>Agrege productos para verlos en esta lista</p>
+            } @else {
+                <ul class="lista-productos">
+                    @for (item of productosCart; track $index) {
+                        <li class="cart-item">
+                            <img class="cart-item-img" src="{{ item.img }}" alt="{{ item.title }}">
+                            <div class="cart-item-details">
+                            <h3 class="cart-item-title">{{ item.title }}</h3>
+                            <p class="cart-item-id">ID: {{ item.id }}</p>
+                            <p class="cart-item-price">Precio: ${{ item.price }}</p>
+                            <p class="cart-item-price">Total: ${{item.price*item.cantidad}}</p>
+                            <div class="cart-item-controls">
+                                <button class="btn-delete">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
+                                <div class="cart-item-quantity">
+                                <span>Cantidad:</span>
+                                <input type="number" [value]="item.cantidad" min="1" />
+                                </div>
+                            </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+        </section>
+        <section class="section-btn-cart">
+            <button type="button" class="btn btn-danger">
+                <i class="bi bi-trash3-fill"></i>
+                Cancelar
+            </button>
+            <button type="button" class="btn btn-success">
+                <i class="bi bi-bag-fill"></i>
+                Comprar
+            </button>
+        </section>
+    </div>
+}
